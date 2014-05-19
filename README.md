@@ -5,27 +5,25 @@ Tmux sessions.
 
 **Problem**
 
-Tmux built-in interactive session selector (bound to `prefix + s` by default)
-is great. But in case you have large number of Tmux sessions, reading from the
-session list (visually parsing it), finding the session number and finally
-pressing it **is slow**.
+Session switching for a large number of Tmux sessions **is slow**. Finding and
+switching to the desired session in the below session list **takes seconds**.
 
-This is especially true if you juggle 10+ sessions/projects.
+![long list of sessions](/screenshots/sessions_list.png)
 
-We need something faster. Something where a session list does not need to be
-visually parsed - because that's the slowest action.
+The main problem is: reading (visually parsing) long list of sessions is
+slow and it needs to be avoided.
+
+
 
 **Solution**
 
-`tmux_goto_session` enables you to switch sessions without having to read
-through the session list. It's a "tell don't ask" principle applied to Tmux.
+`tmux_goto_session` is a  "tell don't ask/read" principle applied to Tmux.
 
-It enables you to hit `prefix + g` (mnemonic for "go") and start typing session
-name. Hit `Enter` and you're switched. Just typing like this should be a faster.
+Just hit `prefix + g` (mnemonic for "goto") and start typing session name.
 
 ### Other features
 
-- if you misspelled section name or section does not exist, `goto_session`
+- if you misspelled session name or session does not exist, `goto_session`
   prompt is automatically invoked again. Hit `C-c` to stop this "loop".
 - you can type just the minimum unambiguous number of letters from the session
   name.<br/>
