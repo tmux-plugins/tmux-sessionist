@@ -13,13 +13,15 @@ switching to the desired session in the below session list **takes seconds**.
 The main problem is: reading (visually parsing) long list of sessions is
 slow and it needs to be avoided.
 
-
-
 **Solution**
 
 `tmux_goto_session` is a  "tell don't ask/read" principle applied to Tmux.
 
 Just hit `prefix + g` (mnemonic for "goto") and start typing session name.
+Most likely you already have the project/session name in your head and you
+don't need to look it up.
+
+![animated gif](/screenshots/tmux_goto_session.gif)
 
 ### Other features
 
