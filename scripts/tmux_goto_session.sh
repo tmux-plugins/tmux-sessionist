@@ -28,5 +28,5 @@ tmux run-shell 'interpolation={session_name}; tmux list-sessions -F "#$interpola
 # Starts a loop: the command is invoked until correct session name is typed,
 # or until prompt is cancelled with Ctrl-c.
 tmux command-prompt -p session: " \
-    send-keys C-c; \
-    run-shell 'tmux switch-client -t %1 || $CURRENT_SCRIPT'"
+	send-keys C-c; \
+	run-shell 'tmux switch-client -t %1 || $CURRENT_SCRIPT'"
