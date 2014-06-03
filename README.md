@@ -76,6 +76,20 @@ For example, to set it to `prefix + *` (asterisk) put this in `.tmux.conf`:
 Don't forget to reload TMUX environment (`$ tmux source-file ~/.tmux.conf`)
 after you do this.
 
+### Other plugins
+
+You might also find these useful:
+
+- [pain control](https://github.com/bruno-/tmux_pain_control) - useful standard
+  bindings for controlling panes
+- [battery osx](https://github.com/bruno-/tmux_battery_osx) - battery status
+  for OSX in Tmux `status-right`
+- [logging](https://github.com/bruno-/tmux_logging) - easy logging and
+  screen capturing
+- [online status](https://github.com/bruno-/tmux_online_status) - online status
+  indicator in Tmux `status-right`. Useful when on flaky connection to see if
+  you're online.
+
 ### License
 
 [MIT](LICENSE.md)
