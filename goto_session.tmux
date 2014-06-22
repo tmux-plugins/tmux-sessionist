@@ -2,7 +2,7 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-default_key_bindings="g C-g"
+default_key_bindings="g"
 tmux_option="@goto_session_key"
 
 # tmux show-option "q" (quiet) flag does not set return value to 1, even though
