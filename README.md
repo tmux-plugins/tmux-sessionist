@@ -15,7 +15,7 @@ slow and it needs to be avoided.
 
 **Solution**
 
-`tmux_goto_session` is a  "tell don't ask/read" principle applied to Tmux.
+`tmux-goto-session` is a  "tell don't ask" principle applied to Tmux.
 
 Just hit `prefix + g` (mnemonic for "goto") and start typing session name.
 Most likely you already have the project/session name in your head and you
@@ -25,33 +25,33 @@ don't need to look it up.
 
 ### Other features
 
-- if you misspelled session name or session does not exist, `goto_session`
+- if you misspelled session name or session does not exist, `goto-session`
   prompt is automatically invoked again. Hit `C-c` to stop this "loop".
 - you can type just the minimum unambiguous number of letters from the session
   name.<br/>
   Example: you have sessions `project`, `ruby` and `javascript`. Typing just
-  `p`, `r` or `j` in `goto_session` prompt will switch you to the respective
+  `p`, `r` or `j` in `goto-session` prompt will switch you to the respective
   project.<br/>
   This is actually a Tmux feature and it helps a lot.
 
-### Installation with [Tmux Plugin Manager](https://github.com/bruno-/tpm) (recommended)
+### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @tpm_plugins "              \
-      bruno-/tpm                       \
-      bruno-/tmux_goto_session         \
+    set -g @tpm_plugins "                \
+      tmux-plugins/tpm                   \
+      tmux-plugins/tmux-goto-session     \
     "
 
 Hit `prefix + I` to fetch the plugin and source it.
 
-You can now press `prefix + g` to invoke `goto_session`.
+You can now press `prefix + g` to invoke `goto-session`.
 
 ### Manual Installation
 
 Clone the repo:
 
-    $ git clone https://github.com/bruno-/tmux_goto_session ~/clone/path
+    $ git clone https://github.com/tmux-plugins/tmux-goto-session ~/clone/path
 
 Add this line to the bottom of `.tmux.conf`:
 
@@ -62,7 +62,7 @@ Reload TMUX environment:
     # type this in terminal
     $ tmux source-file ~/.tmux.conf
 
-You can now press `prefix + g` to invoke `goto_session`.
+You can now press `prefix + g` to invoke `goto-session`.
 
 ### Configuration
 
@@ -80,15 +80,10 @@ after you do this.
 
 You might also find these useful:
 
-- [pain control](https://github.com/bruno-/tmux_pain_control) - useful standard
+- [pain control](https://github.com/tmux-plugins/tmux-pain-control) - useful standard
   bindings for controlling panes
-- [battery osx](https://github.com/bruno-/tmux_battery_osx) - battery status
-  for OSX in Tmux `status-right`
-- [logging](https://github.com/bruno-/tmux_logging) - easy logging and
+- [logging](https://github.com/tmux-plugins/tmux-logging) - easy logging and
   screen capturing
-- [online status](https://github.com/bruno-/tmux_online_status) - online status
-  indicator in Tmux `status-right`. Useful when on flaky connection to see if
-  you're online.
 
 ### License
 
