@@ -18,7 +18,7 @@ get_tmux_option() {
 	fi
 }
 
-# Multiple bindings can be set. Default bindings are "g C-g".
+# Multiple bindings can be set. Default binding is "g".
 set_goto_session_bindings() {
 	local key_bindings=$(get_tmux_option "$tmux_option" "$default_key_bindings")
 	for key in $key_bindings; do
