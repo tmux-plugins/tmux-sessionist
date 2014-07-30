@@ -33,6 +33,7 @@ don't need to look it up.
   `p`, `r` or `j` in `goto-session` prompt will switch you to the respective
   project.<br/>
   This is actually a Tmux feature and it helps a lot.
+- `prefix + S` switches to the last session
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
