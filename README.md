@@ -26,9 +26,8 @@ don't need to look it up.
 ### Other features
 
 - if you misspelled session name or session does not exist, `goto-session`
-  prompt is automatically invoked again. Hit `C-c` to stop this "loop".
-- you can type just the minimum unambiguous number of letters from the session
-  name.<br/>
+  prompt is automatically invoked again. Hit `Enter` to stop this "loop".
+- you can type just the minimum number of letters from the session name.<br/>
   Example: you have sessions `project`, `ruby` and `javascript`. Typing just
   `p`, `r` or `j` in `goto-session` prompt will switch you to the respective
   project.<br/>
