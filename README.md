@@ -33,6 +33,7 @@ don't need to look it up.
   project.<br/>
   This is actually a Tmux feature and it helps a lot.
 - `prefix + S` switches to the last session
+- `prefix + C` prompt for creating a new session by name
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
