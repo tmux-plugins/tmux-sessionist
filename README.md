@@ -43,9 +43,7 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
       tmux-plugins/tmux-goto-session     \
     "
 
-Hit `prefix + I` to fetch the plugin and source it.
-
-You can now press `prefix + g` to invoke `goto-session`.
+Hit `prefix + I` to fetch the plugin and source it. You can now use the plugin.
 
 ### Manual Installation
 
@@ -62,14 +60,11 @@ Reload TMUX environment:
     # type this in terminal
     $ tmux source-file ~/.tmux.conf
 
-You can now press `prefix + g` to invoke `goto-session`.
+You can now use the plugin.
 
 ### Configuration
 
-You can set `@goto_session_key` Tmux option to choose which key is
-`goto_session` bound to.
-
-For example, to set it to `prefix + *` (asterisk) put this in `.tmux.conf`:
+To change default key binding to, for example `prefix + *`, put this in `.tmux.conf`:
 
     set-option -g @goto_session_key "*"
 

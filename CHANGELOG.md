@@ -2,6 +2,7 @@
 
 ### master
 - refactoring. Empty submission quits the 'goto loop'
+- simplify readme
 
 ### v1.1.0, 2014-07-30
 - add other plugins list to the README
