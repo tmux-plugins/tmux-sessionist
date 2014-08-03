@@ -3,6 +3,7 @@
 ### master
 - plugin name change
 - revamp the readme
+- update the plugin main file and user variables
 
 ### v1.2.0, 2014-08-03
 - refactoring. Empty submission quits the 'goto loop'

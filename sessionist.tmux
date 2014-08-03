@@ -2,20 +2,20 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
-default_key_bindings="g"
-tmux_option="@goto_session_key"
+default_key_bindings_goto="g"
+tmux_option_goto="@sessionist_goto"
 
 default_key_bindings_alternate="S"
-tmux_option_alternate="@goto_alternate_session_key"
+tmux_option_alternate="@sessionist_alternate"
 
 default_key_bindings_new="C"
-tmux_option_new="@goto_new_session_key"
+tmux_option_new="@sessionist_new"
 
 source "$CURRENT_DIR/scripts/helpers.sh"
 
 # Multiple bindings can be set. Default binding is "g".
 set_goto_session_bindings() {
-	local key_bindings=$(get_tmux_option "$tmux_option" "$default_key_bindings")
+	local key_bindings=$(get_tmux_option "$tmux_option_goto" "$default_key_bindings_goto")
 	local key
 	for key in $key_bindings; do
 		tmux bind-key "$key" run-shell "$CURRENT_DIR/scripts/tmux_goto_session.sh"
