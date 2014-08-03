@@ -1,8 +1,5 @@
 # Tmux sessionist
 
-Tmux plugin for (very) fast session switching. Effective for a large number of
-Tmux sessions.
-
 Lightweight tmux utilities for switching and creating sessions.
 
 ### Features
