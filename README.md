@@ -7,10 +7,10 @@ Lightweight tmux utilities for switching and creating sessions.
 - `prefix + g` - prompts for session name and switches to it. Performs 'kind-of'
   name completion.<br/>
   Faster than the built-in `prefix + s` prompt for long session lists.
-- `prefix + C` - prompt for creating a new session by name.
-- `prefix + S` - switches to the last session.<br/>
-  The same as built-in `prefix + L` that everyone seems to override with some
-  other binding.
+- `prefix + shift + c` - prompt for creating a new session by name.
+- `prefix + shift + s` - switches to the last session.<br/>
+  The same as built-in `prefix + shift + l` that everyone seems to override with
+  some other binding.
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
@@ -21,7 +21,7 @@ Add plugin to the list of TPM plugins in `.tmux.conf`:
       tmux-plugins/tmux-sessionist     \
     "
 
-Hit `prefix + I` to fetch the plugin and source it. You can now use the plugin.
+Hit `prefix + shift + i` to fetch the plugin and source it. You can now use the plugin.
 
 ### Manual Installation
 
