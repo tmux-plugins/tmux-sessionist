@@ -8,18 +8,10 @@ tmux_option="@goto_session_key"
 default_key_bindings_alternate="S"
 tmux_option_alternate="@goto_alternate_session_key"
 
-# tmux show-option "q" (quiet) flag does not set return value to 1, even though
-# the option does not exist. This function patches that.
-get_tmux_option() {
-	local option=$1
-	local default_value=$2
-	local option_value=$(tmux show-option -gqv "$option")
-	if [ -z "$option_value" ]; then
-		echo $default_value
-	else
-		echo $option_value
-	fi
-}
+default_key_bindings_new="C"
+tmux_option_new="@goto_new_session_key"
+
+source "$CURRENT_DIR/scripts/helpers.sh"
 
 # Multiple bindings can be set. Default binding is "g".
 set_goto_session_bindings() {
@@ -39,9 +31,19 @@ set_alternate_session_binding() {
 	done
 }
 
+# Prompt for creating a new session. If the session with the same name exists,
+# it will switch to existing session.
+set_new_session_binding() {
+	local key_bindings=$(get_tmux_option "$tmux_option_new" "$default_key_bindings_new")
+	local key
+	for key in $key_bindings; do
+		tmux bind-key "$key" command-prompt -p "new session name:" "run-shell '$CURRENT_DIR/scripts/tmux_new_session.sh %1'"
+	done
+}
 
 main() {
 	set_goto_session_bindings
 	set_alternate_session_binding
+	set_new_session_binding
 }
 main
