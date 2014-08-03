@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v1.2.0, 2014-08-03
 - refactoring. Empty submission quits the 'goto loop'
 - simplify readme
 - add a `C` keybinding for creating new sessions
