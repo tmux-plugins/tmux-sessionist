@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v2.0.0, 2014-08-03
 - plugin name change
 - revamp the readme
 - update the plugin main file and user variables
