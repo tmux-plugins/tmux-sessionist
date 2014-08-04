@@ -37,7 +37,7 @@ set_new_session_binding() {
 	local key_bindings=$(get_tmux_option "$tmux_option_new" "$default_key_bindings_new")
 	local key
 	for key in $key_bindings; do
-		tmux bind-key "$key" "$CURRENT_DIR/scripts/tmux_new_session_prompt.sh"
+		tmux bind-key "$key" run-shell "$CURRENT_DIR/scripts/tmux_new_session_prompt.sh"
 	done
 }
 

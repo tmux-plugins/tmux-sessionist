@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- fix bug, main script not working
 
 ### v2.0.0, 2014-08-03
 - plugin name change
