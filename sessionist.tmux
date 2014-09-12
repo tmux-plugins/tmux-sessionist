@@ -3,13 +3,13 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 default_key_bindings_goto="g"
-tmux_option_goto="@sessionist_goto"
+tmux_option_goto="@sessionist-goto"
 
 default_key_bindings_alternate="S"
-tmux_option_alternate="@sessionist_alternate"
+tmux_option_alternate="@sessionist-alternate"
 
 default_key_bindings_new="C"
-tmux_option_new="@sessionist_new"
+tmux_option_new="@sessionist-new"
 
 source "$CURRENT_DIR/scripts/helpers.sh"
 

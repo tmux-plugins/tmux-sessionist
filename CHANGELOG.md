@@ -2,6 +2,8 @@
 
 ### master
 - fix bug, main script not working
+- change tmux option variables to have hyphens instead of underscores (tmux
+  users hyphens)
 
 ### v2.0.0, 2014-08-03
 - plugin name change
