@@ -12,6 +12,14 @@ Lightweight tmux utilities for switching and creating sessions.
   The same as built-in `prefix + shift + l` that everyone seems to override with
   some other binding.
 
+### Configuration
+
+By default tmux-sessionist will use the same start-directory as the current
+session directory. To configure it to use the current pane directory, add the
+following to your tmux configuration:
+
+    set -g @sessionist-use-pane-directory
+
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
