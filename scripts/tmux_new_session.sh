@@ -12,7 +12,8 @@ session_name_not_provided() {
 }
 
 session_exists() {
-	tmux has-session -t "$SESSION_NAME" > /dev/null 2>&1
+	tmux list-sessions -F "#{session_name}" |
+		\grep -q "^${SESSION_NAME}$"
 }
 
 switch_to_session() {

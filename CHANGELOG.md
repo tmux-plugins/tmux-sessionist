@@ -3,7 +3,10 @@
 ### master
 - fix bug, main script not working
 - change tmux option variables to have hyphens instead of underscores (tmux
-  users hyphens)
+  uses hyphens)
+- bugfix: when creating a new session, if there is a session 'ruby_foo', you
+  can't create a session 'ruby'. Instead you would get switched to session
+  'ruby_foo'.
 
 ### v2.0.0, 2014-08-03
 - plugin name change
