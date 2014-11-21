@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v2.0.1, 2014-11-21
 - fix bug, main script not working
 - change tmux option variables to have hyphens instead of underscores (tmux
   uses hyphens)
