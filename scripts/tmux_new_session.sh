@@ -21,6 +21,10 @@ switch_to_session() {
 	tmux switch-client -t "$session_name"
 }
 
+tmux_socket() {
+	echo $TMUX | cut -d',' -f1
+}
+
 create_new_tmux_session() {
 	if session_name_not_provided; then
 		exit 0
@@ -28,7 +32,7 @@ create_new_tmux_session() {
 		switch_to_session "$SESSION_NAME"
 		display_message "Switched to existing session ${SESSION_NAME}" "1000"
 	else
-		TMUX="" tmux new -d -s "$SESSION_NAME"
+		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME"
 		switch_to_session "$SESSION_NAME"
 	fi
 }

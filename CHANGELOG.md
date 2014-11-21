@@ -7,6 +7,8 @@
 - bugfix: when creating a new session, if there is a session 'ruby_foo', you
   can't create a session 'ruby'. Instead you would get switched to session
   'ruby_foo'.
+- bugfix: creating a new session when using non-standard socket file. The
+  command for creating new sessions now explicitly uses appropriate socket file.
 
 ### v2.0.0, 2014-08-03
 - plugin name change
