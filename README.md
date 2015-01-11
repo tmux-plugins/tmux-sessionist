@@ -11,6 +11,8 @@ Lightweight tmux utilities for switching and creating sessions.
 - `prefix + shift + s` - switches to the last session.<br/>
   The same as built-in `prefix + shift + l` that everyone seems to override with
   some other binding.
+- `prefix + @` - promote a current pane into a new session.<br/>
+  Analogous to how `prefix + !` breaks current pane to a new window.
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 

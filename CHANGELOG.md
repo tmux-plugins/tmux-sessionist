@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- add a `@` key binding for "promoting" current pane into a new session
 
 ### v2.0.1, 2014-11-21
 - fix bug, main script not working

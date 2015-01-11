@@ -11,6 +11,9 @@ tmux_option_alternate="@sessionist-alternate"
 default_key_bindings_new="C"
 tmux_option_new="@sessionist-new"
 
+default_key_bindings_promote_pane="@"
+tmux_option_promote_pane="@sessionist-promote-pane"
+
 source "$CURRENT_DIR/scripts/helpers.sh"
 
 # Multiple bindings can be set. Default binding is "g".
@@ -41,9 +44,19 @@ set_new_session_binding() {
 	done
 }
 
+# "Promote" the current pane to a new session
+set_promote_pane_binding() {
+	local key_bindings=$(get_tmux_option "$tmux_option_promote_pane" "$default_key_bindings_promote_pane")
+	local key
+	for key in $key_bindings; do
+		tmux bind-key "$key" run-shell "$CURRENT_DIR/scripts/tmux_promote_pane.sh '#{session_name}' '#{pane_id}' '#{pane_current_path}'"
+	done
+}
+
 main() {
 	set_goto_session_bindings
 	set_alternate_session_binding
 	set_new_session_binding
+	set_promote_pane_binding
 }
 main
