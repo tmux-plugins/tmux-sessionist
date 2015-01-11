@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v2.1.0, 2015-01-11
 - add a `@` key binding for "promoting" current pane into a new session
 
 ### v2.0.1, 2014-11-21
