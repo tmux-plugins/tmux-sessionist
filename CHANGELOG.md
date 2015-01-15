@@ -1,6 +1,10 @@
 # Changelog
 
 ### master
+- bugfix: when a pane containing "vim" is promoted to a session, the moved pane
+  has dimensions 80x25. This is the default `new-session -d` win size. Fixing
+  this by first switching to a new session (so the window is resized), then
+  pulling target pane over.
 
 ### v2.1.0, 2015-01-11
 - add a `@` key binding for "promoting" current pane into a new session
