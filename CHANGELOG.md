@@ -5,6 +5,10 @@
   has dimensions 80x25. This is the default `new-session -d` win size. Fixing
   this by first switching to a new session (so the window is resized), then
   pulling target pane over.
+- 'goto-session' feature - when session list does not fit on the screen, show it
+  in columns
+- 'goto-session' - when all the sessions don't fit on the screen, the last
+  displayed element is '...' indicating there's more sessions
 
 ### v2.1.0, 2015-01-11
 - add a `@` key binding for "promoting" current pane into a new session
