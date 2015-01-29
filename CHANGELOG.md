@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v2.2.0, 2015-01-29
 - bugfix: when a pane containing "vim" is promoted to a session, the moved pane
   has dimensions 80x25. This is the default `new-session -d` win size. Fixing
   this by first switching to a new session (so the window is resized), then
