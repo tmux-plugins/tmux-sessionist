@@ -4,6 +4,7 @@
 - split 'goto session' script into 2 files, make it simpler
 - another 'goto session' feature refactoring
 - add 'kill session' key binding
+- refactor script names
 
 ### v2.2.0, 2015-01-29
 - bugfix: when a pane containing "vim" is promoted to a session, the moved pane
