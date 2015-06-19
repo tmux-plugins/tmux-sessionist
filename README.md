@@ -1,6 +1,16 @@
 # Tmux sessionist
 
-Lightweight tmux utilities for switching and creating sessions.
+Lightweight tmux utilities for manipulating tmux sessions.
+
+### Problem
+
+Sessions are a second class citizen in tmux environment:
+
+- there are no default key bindings for creating or deleting sessions
+- creating a session is cumbersome, just try `tmux new-session -s name`
+  inside tmux (hint: you first have to detach)
+- deleting (killing) current session detaches tmux (why?)
+- no fast way for session switching when there's more than ~5 sessions
 
 ### Features
 
@@ -8,6 +18,7 @@ Lightweight tmux utilities for switching and creating sessions.
   name completion.<br/>
   Faster than the built-in `prefix + s` prompt for long session lists.
 - `prefix + C` (shift + c) - prompt for creating a new session by name.
+- `prefix + X` (shift + x) - kill current session without detaching tmux.
 - `prefix + S` (shift + s) - switches to the last session.<br/>
   The same as built-in `prefix + L` that everyone seems to override with
   some other binding.

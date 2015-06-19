@@ -14,6 +14,9 @@ tmux_option_new="@sessionist-new"
 default_key_bindings_promote_pane="@"
 tmux_option_promote_pane="@sessionist-promote-pane"
 
+default_key_bindings_kill_session="X"
+tmux_option_kill_session="@sessionist-kill-session"
+
 source "$CURRENT_DIR/scripts/helpers.sh"
 
 # Multiple bindings can be set. Default binding is "g".
@@ -53,10 +56,19 @@ set_promote_pane_binding() {
 	done
 }
 
+set_kill_session_binding() {
+	local key_bindings=$(get_tmux_option "$tmux_option_kill_session" "$default_key_bindings_kill_session")
+	local key
+	for key in $key_bindings; do
+		tmux bind-key "$key" run-shell "$CURRENT_DIR/scripts/kill_session_prompt.sh '#{session_name}' '#{session_id}'"
+	done
+}
+
 main() {
 	set_goto_session_bindings
 	set_alternate_session_binding
 	set_new_session_binding
 	set_promote_pane_binding
+	set_kill_session_binding
 }
 main
