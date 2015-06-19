@@ -5,6 +5,7 @@
 - another 'goto session' feature refactoring
 - add 'kill session' key binding
 - refactor script names
+- reduce duplication by moving some functions to a shared file
 
 ### v2.2.0, 2015-01-29
 - bugfix: when a pane containing "vim" is promoted to a session, the moved pane

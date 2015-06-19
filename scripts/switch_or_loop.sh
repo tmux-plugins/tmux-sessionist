@@ -4,9 +4,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 SESSION_NAME="$1"
 
-session_exists() {
-	tmux has-session -t "$SESSION_NAME" >/dev/null 2>&1
-}
+source "$CURRENT_DIR/helpers.sh"
 
 dismiss_session_list_page_from_view() {
 	tmux send-keys C-c

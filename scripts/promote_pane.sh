@@ -15,10 +15,6 @@ number_of_panes() {
 		tr -d ' '
 }
 
-tmux_socket() {
-	echo $TMUX | cut -d',' -f1
-}
-
 create_new_session() {
 	TMUX="" tmux -S "$(tmux_socket)" new-session -c "$PANE_CURRENT_PATH" -d -P -F "#{session_name}"
 }
@@ -26,11 +22,6 @@ create_new_session() {
 new_session_pane_id() {
 	local session_name="$1"
 	tmux list-panes -t "$session_name" -F "#{pane_id}"
-}
-
-switch_to_session() {
-	local session_name="$1"
-	tmux switch-client -t "$session_name"
 }
 
 promote_pane() {
