@@ -1,6 +1,8 @@
 # Changelog
 
 ### master
+
+### v2.3.0, 2015-06-19
 - split 'goto session' script into 2 files, make it simpler
 - another 'goto session' feature refactoring
 - add 'kill session' key binding
