@@ -1,6 +1,7 @@
 # Changelog
 
 ### master
+- handle "promote pane" feature bug
 
 ### v2.3.0, 2015-06-19
 - split 'goto session' script into 2 files, make it simpler
