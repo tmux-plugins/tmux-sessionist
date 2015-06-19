@@ -46,12 +46,8 @@ Add this line to the bottom of `.tmux.conf`:
 
     run-shell ~/clone/path/sessionist.tmux
 
-Reload TMUX environment:
-
-    # type this in terminal
-    $ tmux source-file ~/.tmux.conf
-
-You can now use the plugin.
+Reload TMUX environment with `$ tmux source-file ~/.tmux.conf`. You can now use
+the plugin.
 
 ### Other plugins
 
