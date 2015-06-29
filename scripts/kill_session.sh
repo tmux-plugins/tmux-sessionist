@@ -29,6 +29,8 @@ number_of_sessions() {
 		sed "s/ //g"
 }
 
+# Setting `detach-on-destroy off` will also switch session, but it does not
+# respect alternate session.
 switch_session() {
 	local alternate_session_name="$(alternate_session_name)"
 	if [ "$(number_of_sessions)" -eq 1 ]; then

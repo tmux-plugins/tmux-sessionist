@@ -9,7 +9,7 @@ Sessions are a second class citizen in tmux environment:
 - there are no default key bindings for creating or deleting sessions
 - creating a session is cumbersome, just try `tmux new-session -s name`
   inside tmux (hint: you first have to detach)
-- deleting (killing) current session detaches tmux (why?)
+- deleting (killing) current session by default detaches tmux (why?)
 - no fast way for session switching when there's more than ~5 sessions
 
 ### Features
