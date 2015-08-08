@@ -29,10 +29,7 @@ Sessions are a second class citizen in tmux environment:
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:
 
-    set -g @tpm_plugins '              \
-      tmux-plugins/tpm                 \
-      tmux-plugins/tmux-sessionist     \
-    '
+    set -g @plugin 'tmux-plugins/tmux-sessionist'
 
 Hit `prefix + I` to fetch the plugin and source it. You can now use the plugin.
 
