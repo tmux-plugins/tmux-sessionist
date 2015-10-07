@@ -2,6 +2,8 @@
 
 ### master
 - handle "promote pane" feature bug
+- add `.gitattributes` file so that end of line chracter is always set to `\n`
+  on cygwin
 
 ### v2.3.0, 2015-06-19
 - split 'goto session' script into 2 files, make it simpler
