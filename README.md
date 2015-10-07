@@ -2,7 +2,7 @@
 
 Lightweight tmux utilities for manipulating tmux sessions.
 
-### Problem
+### Problem(s)
 
 Sessions are a second class citizen in tmux environment:
 
@@ -11,6 +11,8 @@ Sessions are a second class citizen in tmux environment:
   inside tmux (hint: you first have to detach)
 - deleting (killing) current session by default detaches tmux (why?)
 - no fast way for session switching when there's more than ~5 sessions
+
+This plugin solves the above problems.
 
 ### Features
 
