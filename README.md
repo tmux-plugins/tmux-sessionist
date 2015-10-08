@@ -2,6 +2,8 @@
 
 Lightweight tmux utilities for manipulating tmux sessions.
 
+Tested and working on Linux, OSX and Cygwin.
+
 ### Problem(s)
 
 Sessions are a second class citizen in tmux environment:
