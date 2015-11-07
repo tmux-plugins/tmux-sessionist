@@ -23,7 +23,8 @@ main() {
 		dismiss_session_list_page_from_view
 		tmux switch-client -t "$SESSION_NAME"
 	else
-		"$CURRENT_DIR/show_goto_prompt.sh" "$SESSION_NAME"
+		# goto command prompt again
+		tmux command -p session: "run '$CURRENT_DIR/switch_or_loop.sh %1'"
 	fi
 }
 main
