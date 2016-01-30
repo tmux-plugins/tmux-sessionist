@@ -24,7 +24,7 @@ main() {
 		tmux switch-client -t "$SESSION_NAME"
 	else
 		# goto command prompt again
-		tmux command -p session: "run '$CURRENT_DIR/switch_or_loop.sh %1'"
+		tmux command -p session: "run '$CURRENT_DIR/switch_or_loop.sh \"%1\"'"
 	fi
 }
 main
