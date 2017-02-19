@@ -18,7 +18,7 @@ create_new_tmux_session() {
 		switch_to_session "$SESSION_NAME"
 		display_message "Switched to existing session ${SESSION_NAME}" "2000"
 	else
-		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME"
+		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME" \; source-file ~/.tmux.conf
 		switch_to_session "$SESSION_NAME"
 	fi
 }
