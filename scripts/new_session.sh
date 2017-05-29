@@ -17,7 +17,7 @@ create_new_tmux_session() {
 	elif session_exists; then
 		switch_to_session "$SESSION_NAME"
 		display_message "Switched to existing session ${SESSION_NAME}" "2000"
-	else
+	elif [[ ! -x $(tmuxinator start $SESSION_NAME) ]]; then
 		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME"
 		switch_to_session "$SESSION_NAME"
 	fi
