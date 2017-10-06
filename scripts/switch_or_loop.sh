@@ -19,7 +19,7 @@ main() {
 		dismiss_session_list_page_from_view
 		exit 0
 	fi
-	if session_exists; then
+	if session_exists_prefix; then
 		dismiss_session_list_page_from_view
 		tmux switch-client -t "$SESSION_NAME"
 	else

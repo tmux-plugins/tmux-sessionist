@@ -40,8 +40,12 @@ tmux_socket() {
 	echo $TMUX | cut -d',' -f1
 }
 
-session_exists() {
-	tmux has-session -t="$SESSION_NAME" >/dev/null 2>&1
+session_exists_exact() {
+	tmux has-session -t "=${SESSION_NAME}" >/dev/null 2>&1
+}
+
+session_exists_prefix() {
+	tmux has-session -t "$SESSION_NAME" >/dev/null 2>&1
 }
 
 switch_to_session() {
