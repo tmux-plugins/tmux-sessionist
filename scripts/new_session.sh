@@ -14,7 +14,7 @@ session_name_not_provided() {
 create_new_tmux_session() {
 	if session_name_not_provided; then
 		exit 0
-	elif session_exists; then
+	elif session_exists_exact; then
 		switch_to_session "$SESSION_NAME"
 		display_message "Switched to existing session ${SESSION_NAME}" "2000"
 	else
