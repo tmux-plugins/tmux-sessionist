@@ -14,6 +14,9 @@ tmux_option_new="@sessionist-new"
 default_key_bindings_promote_pane="@"
 tmux_option_promote_pane="@sessionist-promote-pane"
 
+default_key_bindings_join_pane="*"
+tmux_option_join_pane="@sessionist-join-pane"
+
 default_key_bindings_kill_session="X"
 tmux_option_kill_session="@sessionist-kill-session"
 
@@ -56,6 +59,15 @@ set_promote_pane_binding() {
 	done
 }
 
+# "Join" the current pane to a new session (or window)
+set_join_pane_binding() {
+	local key_bindings="$(get_tmux_option "$tmux_option_join_pane" "$default_key_bindings_join_pane")"
+	local key
+	for key in "$key_bindings"; do
+	  tmux bind "$key" run "$CURRENT_DIR/scripts/join_pane.sh"
+	done
+}
+
 set_kill_session_binding() {
 	local key_bindings=$(get_tmux_option "$tmux_option_kill_session" "$default_key_bindings_kill_session")
 	local key
@@ -69,6 +81,7 @@ main() {
 	set_alternate_session_binding
 	set_new_session_binding
 	set_promote_pane_binding
+	set_join_pane_binding
 	set_kill_session_binding
 }
 main
