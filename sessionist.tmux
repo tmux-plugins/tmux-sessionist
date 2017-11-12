@@ -14,8 +14,14 @@ tmux_option_new="@sessionist-new"
 default_key_bindings_promote_pane="@"
 tmux_option_promote_pane="@sessionist-promote-pane"
 
-default_key_bindings_join_pane="*"
-tmux_option_join_pane="@sessionist-join-pane"
+default_key_bindings_join_pane_full="t@"
+tmux_option_join_pane_full="@sessionist-join-pane-full"
+
+default_key_bindings_join_pane_horizontal="t\""
+tmux_option_join_pane_horizontal="@sessionist-join-pane-horizontal"
+
+default_key_bindings_join_pane_vertical="t%"
+tmux_option_join_pane_vertical="@sessionist-join-pane-vertical"
 
 default_key_bindings_kill_session="X"
 tmux_option_kill_session="@sessionist-kill-session"
@@ -59,9 +65,27 @@ set_promote_pane_binding() {
 	done
 }
 
-# "Join" the current pane to a new session (or window)
-set_join_pane_binding() {
-	local key_bindings="$(get_tmux_option "$tmux_option_join_pane" "$default_key_bindings_join_pane")"
+# "Join" the marked pane to the current session in a new window
+set_join_pane_full_binding() {
+	local key_bindings="$(get_tmux_option "$tmux_option_join_pane_full" "$default_key_bindings_join_pane_full")"
+	local key
+	for key in "$key_bindings"; do
+	  tmux bind "$key" run "$CURRENT_DIR/scripts/join_pane.sh"
+	done
+}
+
+# "Join" the marked pane to the current pane horizontally
+set_join_pane_horizontal_binding() {
+	local key_bindings="$(get_tmux_option "$tmux_option_join_pane_horizontal" "$default_key_bindings_join_pane_horizontal")"
+	local key
+	for key in "$key_bindings"; do
+	  tmux bind "$key" run "$CURRENT_DIR/scripts/join_pane.sh"
+	done
+}
+
+# "Join" the marked pane to the current pane vertically
+set_join_pane_vertical_binding() {
+	local key_bindings="$(get_tmux_option "$tmux_option_join_pane_vertical" "$default_key_bindings_join_pane_vertical")"
 	local key
 	for key in "$key_bindings"; do
 	  tmux bind "$key" run "$CURRENT_DIR/scripts/join_pane.sh"
@@ -81,7 +105,9 @@ main() {
 	set_alternate_session_binding
 	set_new_session_binding
 	set_promote_pane_binding
-	set_join_pane_binding
+	set_join_pane_full_binding
+	set_join_pane_horizontal_binding
+	set_join_pane_vertical_binding
 	set_kill_session_binding
 }
 main
