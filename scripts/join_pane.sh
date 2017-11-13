@@ -7,8 +7,8 @@ source "$CURRENT_DIR/helpers.sh"
 
 join_prompt() {
   tmux command-prompt -1 \
-    -p 'join-pane - horizontal: (h " -) vertical: (v % |) full: (f @) ' \
-    "run \"'$CURRENT_DIR/join_pane.sh' '%%'\""
+    -p 'join-pane - horizontal: (h % |) vertical: (v " -) full: (f @) ' \
+    "run \"'$CURRENT_DIR/join_pane.sh' '%%%'\""
 }
 
 join_pane() {
@@ -28,11 +28,11 @@ main() {
     local join_pane_flag
     case $JOIN_KEY in
       'h') join_pane_flag="-h";;
-      '"') join_pane_flag="-h";;
-      '-') join_pane_flag="-h";;
+      '%') join_pane_flag="-h";;
+      '|') join_pane_flag="-h";;
       'v') join_pane_flag="-v";;
-      '%') join_pane_flag="-v";;
-      '|') join_pane_flag="-v";;
+      '"') join_pane_flag="-v";;
+      '-') join_pane_flag="-v";;
       'f') join_pane_flag="-b";;
       '@') join_pane_flag="-b";;
     esac
