@@ -8,7 +8,7 @@ source "$CURRENT_DIR/helpers.sh"
 join_prompt() {
   tmux command-prompt -1 \
     -p 'join-pane - horizontal: (h " -) vertical: (v % |) full: (f @) ' \
-    "run \"'$CURRENT_DIR/join_pane.sh' %%\""
+    "run \"'$CURRENT_DIR/join_pane.sh' '%%'\""
 }
 
 join_pane() {
