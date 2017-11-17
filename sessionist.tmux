@@ -59,12 +59,34 @@ set_promote_pane_binding() {
 	done
 }
 
+set_join_pane_secondary_bindings() {
+	local secondary_key_table="$1"
+	local break_pane_flag="$2"
+
+	while read -r key flag; do
+		tmux bind-key -T"$secondary_key_table" "$key" run \
+			"'$CURRENT_DIR/scripts/join_pane.sh' '$secondary_key_table' '$break_pane_flag' '$flag'"
+	done <<KEY_FLAGS
+h -h
+% -h
+| -h
+v -v
+" -v
+- -v
+f $break_pane_flag
+@ $break_pane_flag
+KEY_FLAGS
+}
+
 # "Join" the marked pane to the current session/window
 set_join_pane_binding() {
 	local key_bindings="$(get_tmux_option "$tmux_option_join_pane" "$default_key_bindings_join_pane")"
 	local key
+	local secondary_key_table="join-pane"
+	local break_pane_flag="-b"
+	set_join_pane_secondary_bindings "$secondary_key_table" "$break_pane_flag"
 	for key in "$key_bindings"; do
-	  tmux bind "$key" run "$CURRENT_DIR/scripts/join_pane.sh"
+		tmux bind "$key" run "$CURRENT_DIR/scripts/join_pane.sh '$secondary_key_table' '$break_pane_flag'"
 	done
 }
 
