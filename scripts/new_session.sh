@@ -4,6 +4,7 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # global variable
 SESSION_NAME="$1"
+SESSION_START_DIR="$2"
 
 source "$CURRENT_DIR/helpers.sh"
 
@@ -18,7 +19,7 @@ create_new_tmux_session() {
 		switch_to_session "$SESSION_NAME"
 		display_message "Switched to existing session ${SESSION_NAME}" "2000"
 	else
-		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME"
+		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME" -c "$SESSION_START_DIR"
 		switch_to_session "$SESSION_NAME"
 	fi
 }
