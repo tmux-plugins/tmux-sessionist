@@ -45,7 +45,7 @@ set_alternate_session_binding() {
 # it will switch to existing session.
 set_new_session_binding() {
 	local key_bindings=$(get_tmux_option "$tmux_option_new" "$default_key_bindings_new")
-	local start_directory=$(get_tmux_option "$starting_directory")
+	local start_directory=$(get_tmux_option "$starting_directory" "$HOME")
 	local key
 	for key in $key_bindings; do
 		tmux bind "$key" run "$CURRENT_DIR/scripts/new_session_prompt.sh '$start_directory'"
