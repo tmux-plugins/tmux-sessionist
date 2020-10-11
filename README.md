@@ -18,8 +18,8 @@ This plugin solves the above problems.
 
 ### Features
 
-- `prefix + g` - prompts for session name and switches to it. Performs 'kind-of'
-  name completion.<br/>
+- `prefix + g` - prompts for session name and switches to it. Performs
+  auto-completion using fzf.<br/>
   Faster than the built-in `prefix + s` prompt for long session lists.
 - `prefix + C` (shift + c) - prompt for creating a new session by name.
 - `prefix + X` (shift + x) - kill current session without detaching tmux.
