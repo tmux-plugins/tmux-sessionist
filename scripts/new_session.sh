@@ -18,8 +18,13 @@ create_new_tmux_session() {
 		switch_to_session "$SESSION_NAME"
 		display_message "Switched to existing session ${SESSION_NAME}" "2000"
 	else
-		TMUX="" tmux -S "$(tmux_socket)" new-session -d -s "$SESSION_NAME"
-		switch_to_session "$SESSION_NAME"
+		# New session name may differ from the input. Eg input name may be
+		# 'foo.bar', but new name will be 'foo_bar'.
+		#
+		# -c "#{pane_current_path}" has to be specified, otherwise a random path is
+		# used for the new session.
+		local session_name=$(TMUX="" tmux -S "$(tmux_socket)" new-session -d -P -c "#{pane_current_path}" -s "$SESSION_NAME")
+		switch_to_session "$session_name"
 	fi
 }
 
