@@ -16,7 +16,7 @@ Sessions are a second class citizen in tmux environment:
 
 This plugin solves the above problems.
 
-### Features
+### Key Bindings
 
 - `prefix + g` - prompts for session name and switches to it. Performs 'kind-of'
   name completion.<br/>
@@ -32,7 +32,18 @@ This plugin solves the above problems.
   - secondary-keys
     - `h`, `-`, `"`: join horizontally
     - `v`, `|`, `%`: join vertically
-    - `f`, `@`: join full screen
+    - `f`, `@`: join full screen  
+
+To change these, add to `.tmux.conf`:
+
+    set -g @sessionist-goto 'C-f'
+    set -g @sessionist-alternate 'P'
+    set -g @sessionist-new 'C-c'
+    set -g @sessionist-promote-pane 'C-1'
+    set -g @sessionist-join-pane 'no-key'
+    set -g @sessionist-kill-session 'C-x'
+
+instad, to unbind, simply set the variable to arbitrary text (e.g. `no-key`)
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
