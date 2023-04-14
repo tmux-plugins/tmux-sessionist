@@ -39,7 +39,8 @@ To change these, add to `.tmux.conf`:
     set -g @sessionist-goto 'C-f'
     set -g @sessionist-alternate 'P'
     set -g @sessionist-new 'C-c'
-    set -g @sessionist-promote-pane 'C-1'
+    set -g @sessionist-promote-pane 'b'
+    set -g @sessionist-promote-window 'B'
     set -g @sessionist-join-pane 'no-key'
     set -g @sessionist-kill-session 'C-x'
 

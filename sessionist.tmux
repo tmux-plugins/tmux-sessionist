@@ -14,6 +14,9 @@ tmux_option_new="@sessionist-new"
 default_key_bindings_promote_pane="@"
 tmux_option_promote_pane="@sessionist-promote-pane"
 
+default_key_bindings_promote_window="C-@"
+tmux_option_promote_window="@sessionist-promote-window"
+
 default_key_bindings_join_pane="t"
 tmux_option_join_pane="@sessionist-join-pane"
 
@@ -56,6 +59,15 @@ set_promote_pane_binding() {
 	local key
 	for key in $key_bindings; do
 		tmux bind "$key" run "$CURRENT_DIR/scripts/promote_pane.sh '#{session_name}' '#{pane_id}' '#{pane_current_path}'"
+	done
+}
+
+# "Promote" the current window to a new session
+set_promote_window_binding() {
+	local key_bindings=$(get_tmux_option "$tmux_option_promote_window" "$default_key_bindings_promote_window")
+	local key
+	for key in $key_bindings; do
+		tmux bind "$key" run "$CURRENT_DIR/scripts/promote_window.sh '#{session_name}' '#{window_id}' '#{window_name}' '#{pane_current_path}'"
 	done
 }
 
@@ -103,6 +115,7 @@ main() {
 	set_alternate_session_binding
 	set_new_session_binding
 	set_promote_pane_binding
+  set_promote_window_binding
 	set_join_pane_binding
 	set_kill_session_binding
 }
