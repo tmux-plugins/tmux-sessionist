@@ -27,6 +27,7 @@ This plugin solves the above problems.
   The same as built-in `prefix + L` that everyone seems to override with
   some other binding.
 - `prefix + @` - promote current pane into a new session.<br/>
+- `prefix + ctrl +  @` - promote current window into a new session.<br/>
   Analogous to how `prefix + !` breaks current pane to a new window.
 - `prefix + t<secondary-key>` - join currently marked pane (`prefix + m`) to current session/window, and switch to it
   - secondary-keys
@@ -39,7 +40,8 @@ To change these, add to `.tmux.conf`:
     set -g @sessionist-goto 'C-f'
     set -g @sessionist-alternate 'P'
     set -g @sessionist-new 'C-c'
-    set -g @sessionist-promote-pane 'C-1'
+    set -g @sessionist-promote-pane 'b'
+    set -g @sessionist-promote-window 'B'
     set -g @sessionist-join-pane 'no-key'
     set -g @sessionist-kill-session 'C-x'
 
