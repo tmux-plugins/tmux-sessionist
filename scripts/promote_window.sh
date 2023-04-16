@@ -17,19 +17,26 @@ number_of_windows() {
 }
 
 create_new_session() {
-	TMUX="" tmux -S "$(tmux_socket)" new-session -c "$WINDOW_CURRENT_PATH" -s "se-$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
+	if [ "$(get_tmux_option "@sessionist-maintain-path")" == "on" ]; then
+		TMUX="" tmux -S "$(tmux_socket)" new-session -c "$WINDOW_CURRENT_PATH" -s "se-$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
+	else
+		TMUX="" tmux -S "$(tmux_socket)" new-session -s "se-$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
+	fi
 }
 
-new_session_window_id() {
+session_window_id() {
 	local session_name="$1"
 	tmux list-windows -t "$session_name" -F "#{window_id}"
 }
 
 promote_window() {
+	if [ -n "$(session_window_id "$CURRENT_WINDOW_NAME")" ]; then
+		CURRENT_WINDOW_NAME="$CURRENT_WINDOW_NAME^"
+	fi
 	local session_name="$(create_new_session)"
-	local new_session_window_id="$(new_session_window_id "$session_name")"
-	tmux swap-window -s "$CURRENT_WINDOW_ID" -t "$new_session_window_id"
-	tmux kill-window -t "$new_session_window_id"
+	local session_window_id="$(session_window_id "$session_name")"
+	tmux swap-window -s "$CURRENT_WINDOW_ID" -t "$session_window_id"
+	tmux kill-window -t "$session_window_id"
 	switch_to_session "$session_name"
 }
 
