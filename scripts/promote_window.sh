@@ -5,39 +5,37 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source "$CURRENT_DIR/helpers.sh"
 
 # global vars passed to the script as arguments
-CURRENT_SESSION_NAME="$1"
+CURRENT_SESSION_ID="$1"
 CURRENT_WINDOW_ID="$2"
-CURRENT_WINDOW_NAME="$3"
 WINDOW_CURRENT_PATH="$4"
 
 number_of_windows() {
-	tmux list-windows -t "$CURRENT_SESSION_NAME" |
+	tmux list-windows -t "$CURRENT_SESSION_ID" |
 		wc -l |
 		tr -d ' '
 }
 
 create_new_session() {
 	if [ "$(get_tmux_option "@sessionist-maintain-path")" == "on" ]; then
-		TMUX="" tmux -S "$(tmux_socket)" new-session -c "$WINDOW_CURRENT_PATH" -s "se-$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
+		TMUX="" tmux -S "$(tmux_socket)" new-session -c "$WINDOW_CURRENT_PATH" -d -P -F "#{session_id}"
 	else
-		TMUX="" tmux -S "$(tmux_socket)" new-session -s "se-$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
+		TMUX="" tmux -S "$(tmux_socket)" new-session -d -P -F "#{session_id}"
 	fi
 }
 
 session_window_id() {
-	local session_name="$1"
-	tmux list-windows -t "$session_name" -F "#{window_id}"
+	local session_id="$1"
+	tmux list-windows -t "$session_id" -F "#{window_id}"
 }
 
 promote_window() {
-	if [ -n "$(session_window_id "$CURRENT_WINDOW_NAME")" ]; then
-		CURRENT_WINDOW_NAME="$CURRENT_WINDOW_NAME^"
-	fi
-	local session_name="$(create_new_session)"
-	local session_window_id="$(session_window_id "$session_name")"
+	local session_id="$(create_new_session)"
+	local session_window_id="$(session_window_id "$session_id")"
 	tmux swap-window -s "$CURRENT_WINDOW_ID" -t "$session_window_id"
 	tmux kill-window -t "$session_window_id"
-	switch_to_session "$session_name"
+	switch_to_session "$session_id"
+	CURRENT_WINDOW_NAME=$(tmux display-message -p "#{window_name}")
+	tmux rename-session -t "$session_id" "$CURRENT_WINDOW_NAME+"
 }
 
 main() {
