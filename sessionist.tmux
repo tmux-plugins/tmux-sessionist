@@ -115,7 +115,7 @@ main() {
 	set_alternate_session_binding
 	set_new_session_binding
 	set_promote_pane_binding
-  set_promote_window_binding
+	set_promote_window_binding
 	set_join_pane_binding
 	set_kill_session_binding
 }

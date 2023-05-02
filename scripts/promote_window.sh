@@ -17,7 +17,7 @@ number_of_windows() {
 }
 
 create_new_session() {
-	TMUX="" tmux -S "$(tmux_socket)" new-session -c "$WINDOW_CURRENT_PATH" -s "se-$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
+	TMUX="" tmux -S "$(tmux_socket)" new-session -c "$WINDOW_CURRENT_PATH" -s "$CURRENT_WINDOW_NAME" -d -P -F "#{session_name}"
 }
 
 new_session_window_id() {

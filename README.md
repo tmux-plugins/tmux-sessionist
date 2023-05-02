@@ -28,6 +28,7 @@ This plugin solves the above problems.
   some other binding.
 - `prefix + @` - promote current pane into a new session.<br/>
   Analogous to how `prefix + !` breaks current pane to a new window.
+- `prefix + ctrl-@` - promote current window into a new session.
 - `prefix + t<secondary-key>` - join currently marked pane (`prefix + m`) to current session/window, and switch to it
   - secondary-keys
     - `h`, `-`, `"`: join horizontally
