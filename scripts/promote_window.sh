@@ -25,6 +25,12 @@ new_session_window_id() {
 	tmux list-windows -t "$session_id" -F "#{window_id}"
 }
 
+rename_session_to_window() {
+	local new_session_name="$CURRENT_WINDOW_NAME"
+	name_collisions="$(number_of_session_collisions "$new_session_name")"
+	[ "$name_collisions" -gt 0 ] &&
+		new_session_name="$new_session_name-$((name_collisions+1))"
+  tmux rename-session -t "$1" "$new_session_name"
 }
 
 promote_window() {
@@ -32,6 +38,7 @@ promote_window() {
 	local new_session_window_id="$(new_session_window_id "$session_id")"
 	tmux swap-window -s "$CURRENT_WINDOW_ID" -t "$new_session_window_id"
 	tmux kill-window -t "$new_session_window_id"
+	rename_session_to_window "$session_id"
 	switch_to_session "$session_id"
 }
 

@@ -7,6 +7,7 @@ source "$CURRENT_DIR/helpers.sh"
 # global vars passed to the script as arguments
 CURRENT_SESSION_ID="$1"
 CURRENT_PANE_ID="$2"
+PANE_CURRENT_COMMAND="$3"
 PANE_CURRENT_PATH="$4"
 
 number_of_panes() {
@@ -24,6 +25,16 @@ new_session_pane_id() {
 	tmux list-panes -t "$session_id" -F "#{pane_id}"
 }
 
+rename_session_to_pane() {
+	local new_session_name="$PANE_CURRENT_COMMAND"
+	[ "$new_session_name" == "tmux" ] &&
+		new_session_name="$(echo "$PANE_CURRENT_PATH" | sed 's/.*\/\([^/]*\)$/\1/')"
+	[ -z "$new_session_name" ] &&
+		new_session_name="/"
+	name_collisions="$(number_of_session_collisions "$new_session_name")"
+	[ "$name_collisions" -gt 0 ] &&
+		new_session_name="$new_session_name-$((name_collisions+1))"
+  tmux rename-session -t "$1" "$new_session_name"
 }
 
 promote_pane() {
@@ -31,6 +42,7 @@ promote_pane() {
 	local new_session_pane_id="$(new_session_pane_id "$session_id")"
 	tmux swap-pane -s "$CURRENT_PANE_ID" -t "$new_session_pane_id"
 	tmux kill-pane -t "$new_session_pane_id"
+	rename_session_to_pane "$session_id"
 	switch_to_session "$session_id"
 }
 
