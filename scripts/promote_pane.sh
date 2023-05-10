@@ -27,7 +27,7 @@ new_session_pane_id() {
 promote_pane() {
 	local session_name="$(create_new_session)"
 	local new_session_pane_id="$(new_session_pane_id "$session_name")"
-	tmux join-pane -s "$CURRENT_PANE_ID" -t "$new_session_pane_id"
+	tmux swap-pane -s "$CURRENT_PANE_ID" -t "$new_session_pane_id"
 	tmux kill-pane -t "$new_session_pane_id"
 	switch_to_session "$session_name"
 }
