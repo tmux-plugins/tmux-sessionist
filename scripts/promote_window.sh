@@ -26,11 +26,11 @@ new_session_window_id() {
 }
 
 promote_window() {
-	local session_name="$(create_new_session)"
-	local new_session_window_id="$(new_session_window_id "$session_name")"
+	local session_id="$(create_session "$WINDOW_CURRENT_PATH")"
+	local new_session_window_id="$(new_session_window_id "$session_id")"
 	tmux swap-window -s "$CURRENT_WINDOW_ID" -t "$new_session_window_id"
 	tmux kill-window -t "$new_session_window_id"
-	switch_to_session "$session_name"
+	switch_to_session "$session_id"
 }
 
 main() {

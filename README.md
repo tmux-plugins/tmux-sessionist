@@ -35,6 +35,12 @@ This plugin solves the above problems.
     - `v`, `|`, `%`: join vertically
     - `f`, `@`: join full screen
 
+### Configuration
+
+If you wish for sessions created by promoting a pane or window use their path add this to `.tmux.conf`:
+
+    set -g @sessionist-maintain-path 'on'
+
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
 Add plugin to the list of TPM plugins in `.tmux.conf`:

@@ -52,3 +52,11 @@ switch_to_session() {
 	local session_name="$1"
 	tmux switch-client -t "$session_name"
 }
+
+create_session() {
+	if [ "$(get_tmux_option "@sessionist-maintain-path")" == "on" ]; then
+		TMUX="" tmux -S "$(tmux_socket)" new-session -c "$1" -d -P -F "#{session_id}"
+	else
+		TMUX="" tmux -S "$(tmux_socket)" new-session         -d -P -F "#{session_id}"
+	fi
+}

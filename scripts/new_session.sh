@@ -11,6 +11,14 @@ session_name_not_provided() {
 	[ -z "$SESSION_NAME" ]
 }
 
+create_named_session() {
+	if [ "$(get_tmux_option "@sessionist-maintain-path")" == "on" ]; then
+		TMUX="" tmux -S "$(tmux_socket)" new-session -c "$1" -s "$2" -d -P -F "#{session_id}"
+	else
+		TMUX="" tmux -S "$(tmux_socket)" new-session         -s "$2" -d -P -F "#{session_id}"
+	fi
+}
+
 create_new_tmux_session() {
 	if session_name_not_provided; then
 		exit 0
@@ -20,11 +28,9 @@ create_new_tmux_session() {
 	else
 		# New session name may differ from the input. Eg input name may be
 		# 'foo.bar', but new name will be 'foo_bar'.
-		#
-		# -c "#{pane_current_path}" has to be specified, otherwise a random path is
-		# used for the new session.
-		local session_name=$(TMUX="" tmux -S "$(tmux_socket)" new-session -d -P -c "#{pane_current_path}" -s "$SESSION_NAME")
-		switch_to_session "$session_name"
+		local pane_current_path=$(tmux display-message -p "#{pane_current_path}")
+		local session_id=$(create_named_session "$pane_current_path" "$SESSION_NAME")
+		switch_to_session "$session_id"
 	fi
 }
 
