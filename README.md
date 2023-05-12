@@ -16,7 +16,7 @@ Sessions are a second class citizen in tmux environment:
 
 This plugin solves the above problems.
 
-### Features
+### Key Bindings
 
 - `prefix + g` - prompts for session name and switches to it. Performs 'kind-of'
   name completion.<br/>
@@ -29,11 +29,23 @@ This plugin solves the above problems.
 - `prefix + @` - promote current pane into a new session.<br/>
   Analogous to how `prefix + !` breaks current pane to a new window.
 - `prefix + ctrl-@` - promote current window into a new session.
-- `prefix + t<secondary-key>` - join currently marked pane (`prefix + m`) to current session/window, and switch to it
+- `prefix + t + <secondary-key>` - join currently marked pane (`prefix + m`) to current session/window, and switch to it
   - secondary-keys
     - `h`, `-`, `"`: join horizontally
     - `v`, `|`, `%`: join vertically
     - `f`, `@`: join full screen
+
+To change these, add the related option to your `.tmux.conf`:
+
+    set -g @sessionist-goto 'C-f'
+    set -g @sessionist-alternate 'L'
+    set -g @sessionist-new 'C-c'
+    set -g @sessionist-promote-pane 'C-b'
+    set -g @sessionist-promote-window 'C-B'
+    set -g @sessionist-join-pane 'no-key'
+    set -g @sessionist-kill-session 'C-x'
+
+To unbind, simply set the variable to arbitrary text (e.g. `no-key`)
 
 ### Installation with [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm) (recommended)
 
