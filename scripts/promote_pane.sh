@@ -27,10 +27,6 @@ new_session_pane_id() {
 
 rename_session_to_pane() {
 	local new_session_name="$PANE_CURRENT_COMMAND"
-	[ "$new_session_name" == "tmux" ] &&
-		new_session_name="$(echo "$PANE_CURRENT_PATH" | sed 's/.*\/\([^/]*\)$/\1/')"
-	[ -z "$new_session_name" ] &&
-		new_session_name="/"
 	name_collisions="$(number_of_session_collisions "$new_session_name")"
 	[ "$name_collisions" -gt 0 ] &&
 		new_session_name="$new_session_name-$((name_collisions+1))"
