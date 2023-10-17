@@ -52,3 +52,9 @@ switch_to_session() {
 	local session_name="$1"
 	tmux switch-client -t "$session_name"
 }
+
+number_of_session_collisions() {
+	tmux -S "$(tmux_socket)" list-sessions | grep -c "$1" 
+	# this is a temporary implementation, a session might have a similar name or have a name with a higher value than the number of collision
+	# I need help fixing those potential issues
+}

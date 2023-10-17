@@ -58,7 +58,7 @@ set_promote_pane_binding() {
 	local key_bindings=$(get_tmux_option "$tmux_option_promote_pane" "$default_key_bindings_promote_pane")
 	local key
 	for key in $key_bindings; do
-		tmux bind "$key" run "$CURRENT_DIR/scripts/promote_pane.sh '#{session_name}' '#{pane_id}' '#{pane_current_path}'"
+		tmux bind "$key" run "$CURRENT_DIR/scripts/promote_pane.sh '#{session_id}' '#{pane_id}' '#{pane_current_command}' '#{pane_current_path}'"
 	done
 }
 
@@ -67,7 +67,7 @@ set_promote_window_binding() {
 	local key_bindings=$(get_tmux_option "$tmux_option_promote_window" "$default_key_bindings_promote_window")
 	local key
 	for key in $key_bindings; do
-		tmux bind "$key" run "$CURRENT_DIR/scripts/promote_window.sh '#{session_name}' '#{window_id}' '#{window_name}' '#{pane_current_path}'"
+		tmux bind "$key" run "$CURRENT_DIR/scripts/promote_window.sh '#{session_id}' '#{window_id}' '#{window_name}' '#{pane_current_path}'"
 	done
 }
 
